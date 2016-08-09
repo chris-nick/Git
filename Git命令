@@ -54,9 +54,22 @@
     git status
       changes to be committed:
         renamed : README.md -> README
-    
-     
-     
+8.查看提交历史
+  git log : --> 默认按时间倒序列出所有更新 [shift+q]退出
+  git log -p -2 : --> 最近2次提交的内容差异
+  git log --stat : --> 每次提交的简略的统计信息
+  git log --pretty=[oneline/short/full/fuller/format] : --> 不同于默认格式的方式展示提交历史
+    git log --pretty=format:"%h -%an,%ar:%s" : --> 自定义格式展示提交历史
+      
+  注：格式占位符的写法及代表含义参考：https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2
+  限制输出长度:
+    git log -(n) : --> 仅显示最近n条提交
+    git log --since --after :--> 仅显示指定时间之后的提交
+    git log --since --before : --> 仅显示指定时间之前的提交
+    git log --author : --> 仅显示指定作者相关的提交
+    git log --committer : --> 仅显示指定作者相关的提交
+    git log --grep : --> 仅显示指定关键字的提交
+    git log -S : --> 仅显示添加或移除了某个关键字的提交
      
      
      
