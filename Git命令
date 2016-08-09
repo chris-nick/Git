@@ -31,6 +31,40 @@
       A  1.txt : --> 新添加到暂存区的文件
       M  1.txt : --> 被修改的文件并且已放入暂存区
       ?? 1.txt : --> 新添加的未跟踪文件
+    git diff : -->  工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容
+    git diff --staged 或 git diff --cached : --> 已暂存的将要添加到下次提交里的内容
+    git difftool --tool-help : -->  系统支持哪些Git Diff 插件
+5.提交
+  git commit 
+    git commit之前一定要git status 查看是否还有未暂存的文件
+  git commit -m : --> 提交信息与命令放在同一行
+    提交后会进入vim编辑器，输入提交信息，esc+shift:wq(保存)/q!(直接退出) 再次git commit进行提交
+  git commit -a : --> 跳过使用暂存区域，把所有已跟踪过的文件暂存起来一并提交，即跳过git add
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
       
   注：git add 多功能命令：1).开始跟踪新文件 2).已跟踪的文件放到暂存区 3).合并时把所有有冲突的文件标记为已解决状态等.可将这个命令理解为‘添加内容到下一次提交中’,而不是‘将一个文件添加到项目中’.
   
+  参考：https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93
