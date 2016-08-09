@@ -1,0 +1,80 @@
+1.Git运行前的配置：
+  git config --global user.name "Chris Zhao"
+  git config --global user.email "chris.zhao@shijienet.com.cn"
+  //查看配置
+  git config --list
+2.git-help
+  git help <verb>
+  如获取config的帮助命令：git help config
+3.获取git仓库
+  在现有目录中初始化仓库
+    git init
+  克隆现有的仓库
+    git clone [url] 仓库名
+4.记录每次更新到仓库
+  查看文件状态
+    git status：--> 查看状态
+      untracked files : 1.txt --> 未跟踪的文件
+    git add [filename] --> 开始跟踪一个文件  
+      changes to be committed :  --> 处于暂存状态的文件
+        new file : 1.txt
+    修改一个已跟踪的文件在此查看状态git status
+      changes not staged for commit : --> 已跟踪文件的内容发生了变化但没放到暂存区
+        modified : 1.txt
+      git add 1.txt : --> 将已跟踪的文件放在暂存区
+    继续git status:
+      changes to be commited :
+        modified : 1.txt
+    git status -s 或 --short : --> 状态简览
+       M 1.txt : --> 被修改的文件并未放入暂存区
+      MM 1.txt : --> 在工作区被修改并提交到暂存区后又在工作区中被修改了，所以在暂存区和工作区都有该文件被修改了的记录
+      A  1.txt : --> 新添加到暂存区的文件
+      M  1.txt : --> 被修改的文件并且已放入暂存区
+      ?? 1.txt : --> 新添加的未跟踪文件
+    git diff : -->  工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容
+    git diff --staged 或 git diff --cached : --> 已暂存的将要添加到下次提交里的内容
+    git difftool --tool-help : -->  系统支持哪些Git Diff 插件
+5.提交
+  git commit 
+    git commit之前一定要git status 查看是否还有未暂存的文件
+  git commit -m : --> 提交信息与命令放在同一行
+    提交后会进入vim编辑器，输入提交信息，esc+shift:wq(保存)/q!(直接退出) 再次git commit进行提交
+  git commit -a : --> 跳过使用暂存区域，把所有已跟踪过的文件暂存起来一并提交，即跳过git add
+6.移除文件
+  git rm [filename]
+    git rm 1.txt 
+    git status -s
+      D  1.txt : --> 从暂存区域移除了文件,不会再出现在跟踪清单中
+       D 2.txt : --> 只是从工作目录中移除了文件，还会出现在跟踪清单中
+    git rm -f : --> 强制删除,删除之前修改过并且已放至暂存区域必须强制(force)删除
+    git rm \*~ : --> 删除以~结尾的文件
+7.移动文件
+  git mv [file_from] [file_to]
+    git mv README.md README
+    git status
+      changes to be committed:
+        renamed : README.md -> README
+8.查看提交历史
+  git log : --> 默认按时间倒序列出所有更新 [shift+q]退出
+  git log -p -2 : --> 最近2次提交的内容差异
+  git log --stat : --> 每次提交的简略的统计信息
+  git log --pretty=[oneline/short/full/fuller/format] : --> 不同于默认格式的方式展示提交历史
+    git log --pretty=format:"%h -%an,%ar:%s" : --> 自定义格式展示提交历史
+      
+  注：格式占位符的写法及代表含义参考：https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2
+  限制输出长度:
+    git log -(n) : --> 仅显示最近n条提交
+    git log --since --after :--> 仅显示指定时间之后的提交
+    git log --since --before : --> 仅显示指定时间之前的提交
+    git log --author : --> 仅显示指定作者相关的提交
+    git log --committer : --> 仅显示指定作者相关的提交
+    git log --grep : --> 仅显示指定关键字的提交
+    git log -S : --> 仅显示添加或移除了某个关键字的提交
+9.撤销操作
+  git commit --amend
+  详见：https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C   
+     
+      
+注：git add 多功能命令：1).开始跟踪新文件 2).已跟踪的文件放到暂存区 3).合并时把所有有冲突的文件标记为已解决状态等.可将这个命令理解为‘添加内容到下一次提交中’,而不是‘将一个文件添加到项目中’.
+  
+参考：https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93
