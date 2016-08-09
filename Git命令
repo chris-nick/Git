@@ -40,7 +40,21 @@
   git commit -m : --> 提交信息与命令放在同一行
     提交后会进入vim编辑器，输入提交信息，esc+shift:wq(保存)/q!(直接退出) 再次git commit进行提交
   git commit -a : --> 跳过使用暂存区域，把所有已跟踪过的文件暂存起来一并提交，即跳过git add
-     
+6.移除文件
+  git rm [filename]
+    git rm 1.txt 
+    git status -s
+      D  1.txt : --> 从暂存区域移除了文件,不会再出现在跟踪清单中
+       D 2.txt : --> 只是从工作目录中移除了文件，还会出现在跟踪清单中
+    git rm -f : --> 强制删除,删除之前修改过并且已放至暂存区域必须强制(force)删除
+    git rm \*~ : --> 删除以~结尾的文件
+7.移动文件
+  git mv [file_from] [file_to]
+    git mv README.md README
+    git status
+      changes to be committed:
+        renamed : README.md -> README
+    
      
      
      
