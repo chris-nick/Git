@@ -13,6 +13,24 @@
     git clone [url] 仓库名
 4.记录每次更新到仓库
   查看文件状态
-    git status：
-      untracked files --> 未跟踪的文件
+    git status：--> 查看状态
+      untracked files : 1.txt --> 未跟踪的文件
+    git add [filename] --> 开始跟踪一个文件  
+      changes to be committed :  --> 处于暂存状态的文件
+        new file : 1.txt
+    修改一个已跟踪的文件在此查看状态git status
+      changes not staged for commit : --> 已跟踪文件的内容发生了变化但没放到暂存区
+        modified : 1.txt
+      git add 1.txt : --> 将已跟踪的文件放在暂存区
+    继续git status:
+      changes to be commited :
+        modified : 1.txt
+    git status -s 或 --short : --> 状态简览
+       M 1.txt : --> 被修改的文件并未放入暂存区
+      MM 1.txt : --> 在工作区被修改并提交到暂存区后又在工作区中被修改了，所以在暂存区和工作区都有该文件被修改了的记录
+      A  1.txt : --> 新添加到暂存区的文件
+      M  1.txt : --> 被修改的文件并且已放入暂存区
+      ?? 1.txt : --> 新添加的未跟踪文件
       
+  注：git add 多功能命令：1).开始跟踪新文件 2).已跟踪的文件放到暂存区 3).合并时把所有有冲突的文件标记为已解决状态等.可将这个命令理解为‘添加内容到下一次提交中’,而不是‘将一个文件添加到项目中’.
+  
